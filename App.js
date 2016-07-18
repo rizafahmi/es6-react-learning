@@ -2,12 +2,22 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      text: "this is state text",
+      cat: 0
+    }
+  }
+  update(e) {
+    this.setState({text: e.target.value})
+  }
   render() {
     let txt = this.props.text
     return (
       <div>
-        <h1>{txt}</h1>
-        <h2>{this.props.cat}</h2>
+        <input type="text" onChange={this.update.bind(this)} />
+        <h1>{this.state.text}</h1>
       </div>
     )
   }
@@ -23,7 +33,7 @@ App.defaultProps = {
 }
 
 ReactDOM.render(
-  <App cat="50" />,
+  <App cat={50} />,
   document.getElementById('app')
 )
 
