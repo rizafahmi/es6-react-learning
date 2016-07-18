@@ -13,14 +13,25 @@ class App extends React.Component {
     this.setState({text: e.target.value})
   }
   render() {
-    let txt = this.props.text
     return (
       <div>
-        <input type="text" onChange={this.update.bind(this)} />
-        <h1>{this.state.text}</h1>
+        <Widget text={this.state.text} update={this.update.bind(this)} />
+        <Widget text={this.state.text} update={this.update.bind(this)} />
+        <Widget text={this.state.text} update={this.update.bind(this)} />
+        <Widget text={this.state.text} update={this.update.bind(this)} />
       </div>
     )
   }
+}
+
+const Widget = (props) => {
+  return (
+    <div>
+      <input type="text"
+        onChange={props.update} />
+      <h1>{props.text}</h1>
+    </div>
+  )
 }
 
 App.propTypes = {
